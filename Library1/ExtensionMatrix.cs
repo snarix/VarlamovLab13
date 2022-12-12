@@ -21,33 +21,27 @@ namespace Library1
             }
         }
 
-        public static int[] ArrayDifference(this Matrix<int> matrix)
+        public static int ArrayDifference(this Matrix<int> matrix)
         {
-            int max = 0;
+            int max = 0, kol = 0;
             int[] mas = new int[matrix.CountColumn];
             for (int i = 0; i < matrix.CountRow; i++)
             {
                 for (int j = 0; j < matrix.CountColumn; j++)
                 {
-                    mas[j] = matrix[i, j];
+                    mas[j] = matrix[i,j];
                 }
-
+                kol++;
+                var result = mas.Distinct();
+                max = mas.Length - result.Count();
+                if ()
+                {
+                    max = kol;
+                }
             }
-            return mas;
+            
+            return max;
         }
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
