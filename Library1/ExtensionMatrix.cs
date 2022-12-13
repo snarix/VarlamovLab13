@@ -24,26 +24,26 @@ namespace Library1
 
         public static int FindNumberMaxIdentity(this Matrix<int> matrix)
         {
-            int[] maxIdentitys = new int[matrix.CountColumn];
+            int[] maxIdentitys = new int[matrix.CountColumn + 1];
             Dictionary<int, int> identitys = new Dictionary<int, int>();
 
-            for (int j = 0; j < matrix.CountColumn; j++)
+            for (int j = 0; j < matrix.CountRow; j++)
             {
-                for (int i = 0; i < matrix.CountRow; i++)
+                for (int i = 0; i < matrix.CountColumn; i++)
                 {
-                    if (!identitys.ContainsKey(matrix[i, j]))
+                    if (!identitys.ContainsKey(matrix[j, i]))
                     {
-                        identitys.Add(matrix[i, j], 0);
+                        identitys.Add(matrix[j, i], 0);
                     }
 
-                    identitys[matrix[i, j]]++;
+                    identitys[matrix[j, i]]++;
                 }
 
                 maxIdentitys[j] = identitys.Values.Max();
                 identitys.Clear();
             }
 
-            int index = Array.FindIndex(maxIdentitys, el => el == maxIdentitys.Max());
+            int index = Array.FindLastIndex(maxIdentitys, el => el == maxIdentitys.Max());
 
             return index + 1;
 
