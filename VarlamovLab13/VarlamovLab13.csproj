@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="6b88623c-376f-4ab0-8aef-d71993e49fd2_fs.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Library1\Library1.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="6b88623c-376f-4ab0-8aef-d71993e49fd2_fs.jpg" />
   </ItemGroup>
 
 </Project>

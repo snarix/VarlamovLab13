@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VarlamovLab13"
         mc:Ignorable="d"
-        Title="Interface" 
+        Title="Lab13" 
         Height="350"
         Width="500" 
         MinHeight="350"
-        MinWidth="500">
+        MinWidth="500"
+        Icon="/6b88623c-376f-4ab0-8aef-d71993e49fd2_fs.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -72,7 +73,7 @@
                                      VerticalAlignment="Center"
                                      Height="25"
                                      Width="200"
-                                     x:Name="Row">
+                                     x:Name="Row" TextChanged="Row_TextChanged">
                                 <TextBox.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="Копировать" />
@@ -91,7 +92,7 @@
                                      VerticalAlignment="Center"
                                      Height="25"
                                      Width="200"
-                                     x:Name="Column">
+                                     x:Name="Column" TextChanged="Column_TextChanged">
                                 <TextBox.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="Копировать" />

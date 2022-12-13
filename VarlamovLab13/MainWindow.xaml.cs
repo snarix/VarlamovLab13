@@ -48,7 +48,7 @@ namespace VarlamovLab13
 
         private void Calculate(object sender, RoutedEventArgs e)
         {
-            rez.Text = matrix.ArrayDifference().ToString();
+            rez.Text = matrix.FindNumberMaxIdentity().ToString();
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -82,6 +82,16 @@ namespace VarlamovLab13
         private void Exit(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Row_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            rez.Text = null;
+        }
+
+        private void Column_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            rez.Text = null;
         }
     }
 }
