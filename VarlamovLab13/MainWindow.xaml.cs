@@ -30,20 +30,20 @@ namespace VarlamovLab13
         Matrix<int> matrix = new(0, 0);
         private void Create(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(Row.Text, out int rowcount) || !int.TryParse(Column.Text, out int columncount))
+            try
             {
-                MessageBox.Show("Неверный размер массива");
-                return;
+                matrix = new Matrix<int>(Int32.Parse(Row.Text), Int32.Parse(Column.Text));
+                matrix.CreateArray();
+                MatrixGrid.ItemsSource = matrix.ToDataTable().DefaultView;
             }
-            if (columncount <= 0 || rowcount <= 0)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Размер массива должен быть больше 0");
-                return;
+                MessageBox.Show("Данные введены неверно","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            matrix = new Matrix<int>(rowcount, columncount);
-            matrix.CreateArray();
-            MatrixGrid.ItemsSource = matrix.ToDataTable().DefaultView;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Calculate(object sender, RoutedEventArgs e)
@@ -53,12 +53,20 @@ namespace VarlamovLab13
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new();
-            saveFileDialog.DefaultExt = matrix.Extension;
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                matrix.Save(saveFileDialog.FileName);
+                SaveFileDialog saveFileDialog = new();
+                saveFileDialog.DefaultExt = matrix.Extension;
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    matrix.Save(saveFileDialog.FileName);
+                }
             }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message, "Выбран неверный файл", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void Load(object sender, RoutedEventArgs e)
@@ -73,17 +81,6 @@ namespace VarlamovLab13
             }
         }
 
-        private void AboutProgramm(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Дана целочисленная матрица размера M * N." +
-                "\r\nНайти номер последней из ее строк,содержащих максимальное количество одинаковых элементов.");
-        }
-
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
         private void Row_TextChanged(object sender, TextChangedEventArgs e)
         {
             rez.Text = null;
@@ -92,6 +89,32 @@ namespace VarlamovLab13
         private void Column_TextChanged(object sender, TextChangedEventArgs e)
         {
             rez.Text = null;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window1 password = new();
+            password.Owner = this;
+            password.ShowDialog();
+        }
+
+        private void Setting(object sender, RoutedEventArgs e)
+        {
+            Setting setting = new();
+            setting.Owner = this;
+            setting.ShowDialog();
+        }
+
+        private void AboutProgramm(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Дана целочисленная матрица размера M * N." +
+                "\r\nНайти номер последней из ее строк,содержащих максимальное количество одинаковых элементов.");
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Вы действительно хотите закончить работу с программой?", "Выход");
+            Close();
         }
     }
 }

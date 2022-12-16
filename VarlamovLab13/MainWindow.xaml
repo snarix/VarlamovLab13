@@ -10,7 +10,8 @@
         Width="500" 
         MinHeight="350"
         MinWidth="500"
-        Icon="/6b88623c-376f-4ab0-8aef-d71993e49fd2_fs.jpg">
+        Icon="/6b88623c-376f-4ab0-8aef-d71993e49fd2_fs.jpg"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -27,11 +28,14 @@
             <MenuItem Header="Файл">
                 <MenuItem Header="Сохранить"
                           Click="Save"/>
-                <Separator></Separator>
                 <MenuItem Header="Загрузить"
                           Click="Load"/>
+                <Separator></Separator>
+                <MenuItem
+                    Click="Setting"
+                    Header="Настройки"/>
             </MenuItem>
-            <MenuItem>
+            <MenuItem Header="Справка">
                 <MenuItem Header="О программе"
                           Click="AboutProgramm"/>
                 <Separator></Separator>
@@ -173,7 +177,7 @@
             <TextBlock x:Name="data"
                        VerticalAlignment="Top"/>
             <Separator/>
-            <TextBlock Text="Практическая 12, Вариант 3"
+            <TextBlock Text="Практическая 14-15, Вариант 3"
                        VerticalAlignment="Top"/>
 
         </StatusBar>

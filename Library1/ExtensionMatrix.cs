@@ -20,7 +20,6 @@ namespace Library1
                 }
             }
         }
- 
 
         public static int FindNumberMaxIdentity(this Matrix<int> matrix)
         {
@@ -48,30 +47,6 @@ namespace Library1
             return index + 1;
 
         }
-        //public static int FindNumberMaxIdentity()
-        //{
-        //    int[] maxIdentitys = new int[matrix.GetLength(1)];
-        //    Dictionary<int, int> identitys = new Dictionary<int, int>();
-
-        //    for (int j = 0; j < matrix.GetLength(1); j++)
-        //    {
-        //        for (int i = 0; i < matrix.GetLength(0); i++)
-        //        {
-        //            if (!identitys.ContainsKey(matrix[i, j]))
-        //            {
-        //                identitys.Add(matrix[i, j], 0);
-        //            }
-
-        //            identitys[matrix[i, j]]++;
-        //        }
-
-        //        maxIdentitys[j] = identitys.Values.Max();
-        //        identitys.Clear();
-        //    }
-
-        //    int index = Array.FindIndex(maxIdentitys, el => el == maxIdentitys.Max());
-
-        //    return index + 1;
-        //}
+        
     }
 }
