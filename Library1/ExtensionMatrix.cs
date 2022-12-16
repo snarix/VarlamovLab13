@@ -20,7 +20,7 @@ namespace Library1
                 }
             }
         }
-
+        //фффффффф
         public static int FindNumberMaxIdentity(this Matrix<int> matrix)
         {
             int[] maxIdentitys = new int[matrix.CountColumn + 1];
